@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LO9MA — Street Food Premium | Tunis</title>
+<meta name="description" content="LO9MA — Pizza au feu de bois, crêpes, makloub, makloub libanais et plats signature. Réservez ou commandez en ligne. Une expérience culinaire d'exception à Tunis.">
+<meta name="theme-color" content="#14100D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Open Graph -->
+<meta property="og:title" content="LO9MA — Street Food Premium">
+<meta property="og:description" content="Pizza au feu de bois, crêpes, makloub & plus. Réservation & commande en ligne à Tunis.">
+<meta property="og:type" content="restaurant.restaurant">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%2314100D'/%3E%3Ctext x='50' y='63' font-size='50' text-anchor='middle' fill='%23C1440E'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   LO9MA — Design Tokens (palette derived from the brand logo)
+   Palette: Ink #17120E · Ink-soft #201810 · Cream #F5F1E8
+            Cream-soft #ECE6D6 · Neon teal #2FE1D4 · Teal-light #8FFFF2
+            Silver #E9E4D8 · Teal-deep (success) #12A594
+   Type: Fraunces (display) / Manrope (body) / Space Mono (utility, prices, eyebrows)
+   ============================================================ */
+:root{
+  --ink:#17120E;
+  --ink-soft:#201810;
+  --ink-soft2:#2A2119;
+  --cream:#F5F1E8;
+  --cream-soft:#ECE6D6;
+  --ember:#2FE1D4;
+  --ember-light:#8FFFF2;
+  --brass:#E9E4D8;
+  --brass-soft:#B9F3EC;
+  --olive:#12A594;
+  --wine:#0E8A81;
+  --accent-text:#0EA89B;
+
+  --bg:var(--ink);
+  --bg-elevated:var(--ink-soft);
+  --bg-card:var(--ink-soft2);
+  --text:var(--cream);
+  --text-dim:#C9BFAE;
+  --text-faint:#8C8272;
+  --line:rgba(246,239,226,0.12);
+  --line-strong:rgba(246,239,226,0.22);
+  --glass:rgba(33,26,20,0.55);
+  --glass-border:rgba(246,239,226,0.14);
+  --shadow-soft:0 20px 60px -20px rgba(0,0,0,0.6);
+  --shadow-hard:0 30px 80px -20px rgba(0,0,0,0.75);
+  --radius-s:10px;
+  --radius-m:18px;
+  --radius-l:28px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-soft:cubic-bezier(.16,.84,.44,1);
+}
+
+[data-theme="light"]{
+  --bg:var(--cream);
+  --bg-elevated:#FFFDF8;
+  --bg-card:#FFFFFF;
+  --text:#1D1712;
+  --text-dim:#5B5245;
+  --text-faint:#948A78;
+  --line:rgba(20,16,13,0.10);
+  --line-strong:rgba(20,16,13,0.18);
+  --glass:rgba(255,253,248,0.6);
+  --glass-border:rgba(20,16,13,0.08);
+  --shadow-soft:0 20px 60px -25px rgba(20,16,13,0.25);
+  --shadow-hard:0 30px 80px -20px rgba(20,16,13,0.3);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background .5s var(--ease), color .5s var(--ease);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+ul{list-style:none;}
+input,textarea,select{font-family:inherit;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;line-height:1.08;letter-spacing:-0.01em;}
+::selection{background:var(--ember);color:var(--ink);}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:4px;}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ember-light);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--ember);display:inline-block;}
+.container{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);}
+.section{padding:min(14vw,140px) 0;position:relative;}
+.section-head{max-width:640px;margin-bottom:56px;}
+.section-head h2{font-size:clamp(32px,5vw,56px);margin-top:14px;}
+.section-head p{color:var(--text-dim);margin-top:16px;font-size:17px;max-width:520px;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 32px;border-radius:999px;font-weight:600;font-size:14.5px;
+  letter-spacing:.02em;position:relative;overflow:hidden;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .3s, color .3s;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--ember);color:var(--ink);box-shadow:0 10px 30px -8px rgba(47,225,212,0.35);position:relative;overflow:hidden;}
+.btn-primary::after{
+  content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(115deg, transparent, rgba(255,255,255,.4), transparent);
+  transform:skewX(-20deg);transition:left .7s var(--ease);
+}
+.btn-primary:hover::after{left:130%;}
+
+/* Ambient decorative orbs (soft drifting glow) */
+.ambient-orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0;opacity:.35;animation:orbDrift 14s ease-in-out infinite;}
+.orb-1{width:340px;height:340px;background:radial-gradient(circle, rgba(47,225,212,.5), transparent 70%);top:-80px;left:-100px;}
+.orb-2{width:260px;height:260px;background:radial-gradient(circle, rgba(201,162,39,.25), transparent 70%);bottom:-60px;right:-60px;animation-delay:3s;}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle, rgba(47,225,212,.4), transparent 70%);top:20%;right:-120px;animation-delay:1.5s;}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-20px) scale(1.1);}}
+@media(prefers-reduced-motion: reduce){.ambient-orb{animation:none;}}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(47,225,212,0.5);}
+.btn-ghost{background:transparent;border:1px solid var(--line-strong);color:var(--text);backdrop-filter:blur(6px);}
+.btn-ghost:hover{border-color:var(--ember);color:var(--accent-text);transform:translateY(-3px);}
+.btn-brass{background:var(--brass);color:var(--ink);box-shadow:0 10px 30px -8px rgba(233,228,216,0.22);}
+.btn-brass:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(233,228,216,0.3);}
+.btn-sm{padding:10px 20px;font-size:13px;}
+.btn[disabled]{opacity:.5;pointer-events:none;}
+.icon-btn{
+  width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);transition:all .35s var(--ease);position:relative;
+}
+.icon-btn:hover{border-color:var(--ember);background:rgba(47,225,212,.08);transform:translateY(-2px);}
+
+/* ---------- Loader ---------- */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;
+  transition:opacity .7s var(--ease), visibility .7s var(--ease);
+}
+#loader.hidden{opacity:0;visibility:hidden;}
+.loader-logo-wrap{position:relative;width:86px;height:86px;}
+.loader-glow{
+  position:absolute;inset:-26px;border-radius:50%;
+  background:radial-gradient(circle, rgba(47,225,212,.45), transparent 70%);
+  filter:blur(18px);animation:loaderPulse 1.8s ease-in-out infinite;
+}
+@keyframes loaderPulse{0%,100%{opacity:.45;transform:scale(1);}50%{opacity:1;transform:scale(1.18);}}
+.loader-logo{
+  position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(143,255,242,.5);box-shadow:0 10px 30px -10px rgba(0,0,0,.6);
+  animation:loaderBreathe 1.8s ease-in-out infinite;
+}
+@keyframes loaderBreathe{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.loader-bar{width:150px;height:3px;border-radius:3px;background:var(--line-strong);overflow:hidden;position:relative;}
+.loader-bar span{position:absolute;top:0;left:-40%;width:40%;height:100%;background:var(--ember);border-radius:3px;animation:loaderSlide 1.3s ease-in-out infinite;}
+@keyframes loaderSlide{0%{left:-40%;}100%{left:100%;}}
+.loader-text{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:var(--ember-light);text-transform:uppercase;}
+
+/* ---------- Nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:22px 0;transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+}
+header.scrolled{
+  padding:12px 0;background:var(--glass);backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-bottom:1px solid var(--glass-border);box-shadow:var(--shadow-soft);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:20px;letter-spacing:.02em;}
+.brand-mark{width:42px;height:42px;border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 0 0 1px var(--glass-border), 0 6px 18px -8px rgba(47,225,212,.35);transition:transform .4s var(--ease), box-shadow .4s var(--ease);}
+.brand:hover .brand-mark{transform:scale(1.06);box-shadow:0 0 0 1px var(--ember), 0 8px 22px -8px rgba(47,225,212,.55);}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14px;font-weight:600;position:relative;padding:6px 0;color:var(--text);}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ember);transition:width .35s var(--ease);}
+.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.cart-btn{position:relative;}
+.cart-count{
+  position:absolute;top:-4px;right:-4px;background:var(--ember);color:var(--ink);font-size:10px;font-weight:700;
+  width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;transform:scale(0);transition:transform .3s var(--ease);
+}
+.cart-count.show{transform:scale(1);}
+.theme-toggle svg{width:19px;height:19px;}
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px;}
+.burger span{width:18px;height:1.5px;background:var(--text);transition:all .35s var(--ease);}
+.burger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.burger.active span:nth-child(2){opacity:0;}
+.burger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed;inset:0 0 0 auto;width:min(86vw,380px);height:100vh;background:var(--bg-elevated);
+  z-index:600;transform:translateX(100%);transition:transform .55s var(--ease);
+  padding:100px 32px 40px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-hard);
+}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{font-family:'Fraunces',serif;font-size:26px;padding:14px 0;border-bottom:1px solid var(--line);}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);z-index:590;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;}
+.scrim.show{opacity:1;visibility:visible;}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;padding:150px 0 110px;display:flex;align-items:center;overflow:hidden;color:#F6EFE2;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-slide{
+  position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;
+  animation:kenburns 21s ease-in-out infinite;
+  transition:opacity 2s ease-in-out;
+}
+.hero-slide.active{opacity:1;}
+@keyframes kenburns{
+  0%{transform:scale(1.05) translate(0,0);}
+  50%{transform:scale(1.16) translate(-1.5%,-1%);}
+  100%{transform:scale(1.05) translate(0,0);}
+}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(20,16,13,0.35), transparent 60%),
+    linear-gradient(180deg, rgba(20,16,13,.75) 0%, rgba(20,16,13,.35) 32%, rgba(20,16,13,.55) 68%, rgba(20,16,13,.96) 100%);
+}
+.hero-grain{position:absolute;inset:0;z-index:2;opacity:.05;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.embers{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.embers span{
+  position:absolute;bottom:-20px;width:4px;height:4px;border-radius:50%;
+  background:radial-gradient(circle, var(--ember-light), var(--ember) 60%, transparent);
+  box-shadow:0 0 8px 2px rgba(47,225,212,.6);
+  animation:emberRise linear infinite;opacity:0;
+}
+@keyframes emberRise{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}
+  8%{opacity:.9;}
+  50%{transform:translateY(-52vh) translateX(var(--drift,20px)) scale(.7);}
+  92%{opacity:.5;}
+  100%{transform:translateY(-92vh) translateX(calc(var(--drift,20px) * 1.6)) scale(.3);opacity:0;}
+}
+.embers span:nth-child(1){left:8%;width:3px;height:3px;--drift:24px;animation-duration:9s;animation-delay:.2s;}
+.embers span:nth-child(2){left:18%;width:5px;height:5px;--drift:-18px;animation-duration:12s;animation-delay:2.4s;}
+.embers span:nth-child(3){left:32%;width:3px;height:3px;--drift:30px;animation-duration:8s;animation-delay:.9s;}
+.embers span:nth-child(4){left:47%;width:4px;height:4px;--drift:-26px;animation-duration:11s;animation-delay:3.6s;}
+.embers span:nth-child(5){left:61%;width:3px;height:3px;--drift:16px;animation-duration:9.5s;animation-delay:1.6s;}
+.embers span:nth-child(6){left:74%;width:5px;height:5px;--drift:-22px;animation-duration:13s;animation-delay:4.4s;}
+.embers span:nth-child(7){left:86%;width:3px;height:3px;--drift:20px;animation-duration:10s;animation-delay:2.9s;}
+.embers span:nth-child(8){left:94%;width:4px;height:4px;--drift:-14px;animation-duration:8.5s;animation-delay:5.2s;}
+@media(prefers-reduced-motion: reduce){.embers{display:none;}}
+.hero-content{position:relative;z-index:3;width:100%;text-align:center;}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--brass-soft);margin-bottom:18px;}
+.hero-content > h1{font-size:clamp(44px,8.4vw,112px);font-weight:500;letter-spacing:-0.02em;}
+.hero-content > h1 em{font-style:italic;font-weight:400;color:var(--brass-soft);}
+.hero-sub{max-width:560px;margin:26px auto 0;color:rgba(246,239,226,.82);font-size:clamp(15px,2vw,18px);}
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+.hero-scroll{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(246,239,226,.6);
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+}
+.hero-scroll .line{width:1px;height:38px;background:linear-gradient(180deg,rgba(246,239,226,.7),transparent);position:relative;overflow:hidden;}
+.hero-scroll .line::after{content:'';position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--brass-soft);animation:scrolldrop 2s ease-in-out infinite;}
+@keyframes scrolldrop{0%{top:-40%;}100%{top:100%;}}
+.hero-dots{position:absolute;z-index:3;right:36px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;}
+.hero-dots button{width:8px;height:8px;border-radius:50%;background:rgba(246,239,226,.35);transition:all .4s var(--ease);}
+.hero-dots button.active{background:var(--brass-soft);height:26px;border-radius:6px;}
+@media(max-width:720px){.hero-dots{display:none;}}
+
+/* ---------- Category Carousel (coverflow — replaces the orbit ring) ---------- */
+.orbit-system{margin:44px auto 0;max-width:1100px;}
+.carousel-logo{
+  position:relative;width:clamp(88px,12vw,120px);height:clamp(88px,12vw,120px);margin:0 auto 10px;
+  animation:orbitFloat 5.5s ease-in-out infinite;
+}
+@keyframes orbitFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.carousel-logo .orbit-core-glow{
+  position:absolute;inset:-26px;border-radius:50%;
+  background:radial-gradient(circle, rgba(47,225,212,.5), transparent 70%);
+  filter:blur(18px);animation:orbitGlow 3.2s ease-in-out infinite;
+}
+@keyframes orbitGlow{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:1;transform:scale(1.16);}}
+.carousel-logo img{
+  position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(143,255,242,.55);box-shadow:0 0 0 8px rgba(23,18,14,.55), 0 20px 50px -12px rgba(0,0,0,.7);
+}
+.carousel-hint{
+  text-align:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--text-faint);margin-bottom:26px;
+}
+.carousel-hint span{color:var(--ember-light);}
+
+.cat-carousel-outer{position:relative;}
+.cat-carousel{
+  overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
+  padding:60px 0 30px;
+  scrollbar-width:none;
+}
+.cat-carousel::-webkit-scrollbar{display:none;}
+.cat-track{display:flex;align-items:center;gap:34px;width:max-content;padding:0 calc(50% - 75px);}
+.cat-tile{
+  position:relative;flex:0 0 auto;width:150px;display:flex;flex-direction:column;align-items:center;gap:14px;
+  cursor:pointer;transform-style:preserve-3d;will-change:transform,opacity;
+  transition:filter .3s var(--ease);
+}
+.cat-tile .ring{
+  width:118px;height:118px;border-radius:50%;overflow:hidden;position:relative;
+  background:var(--bg-card);border:2px solid var(--line-strong);
+  box-shadow:0 18px 40px -14px rgba(0,0,0,.6), 0 4px 10px rgba(0,0,0,.3);
+  transition:border-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+.cat-tile .ring img{width:100%;height:100%;object-fit:cover;filter:saturate(1.12) contrast(1.06) brightness(1.03);}
+.cat-tile .lbl{
+  font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--text-dim);
+  white-space:nowrap;transition:color .35s var(--ease);text-align:center;
+}
+.cat-tile.is-center .ring{border-color:var(--ember);box-shadow:0 0 0 6px rgba(47,225,212,.16), 0 24px 50px -14px rgba(0,0,0,.65);}
+.cat-tile.is-center .lbl{color:var(--ember-light);font-weight:700;}
+.cat-tile.active .ring{border-color:var(--ember);box-shadow:0 0 0 4px var(--ember), 0 0 0 9px rgba(47,225,212,.2), 0 24px 50px -14px rgba(0,0,0,.65);}
+.cat-tile.active .lbl{color:var(--ember-light);font-weight:700;}
+.cat-tile:hover .ring img{transform:scale(1.08);}
+
+.carousel-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;
+  background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--glass-border);
+  display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);color:var(--text);
+}
+.carousel-arrow:hover{border-color:var(--ember);color:var(--ember-light);transform:translateY(-50%) scale(1.08);}
+.carousel-arrow.prev{left:-4px;} .carousel-arrow.next{right:-4px;}
+@media(max-width:720px){.carousel-arrow{display:none;}}
+.carousel-fade{position:absolute;top:0;bottom:0;width:60px;z-index:4;pointer-events:none;}
+.carousel-fade.left{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+.carousel-fade.right{right:0;background:linear-gradient(270deg,var(--bg),transparent);}
+@media(max-width:640px){.cat-tile{width:104px;}.cat-tile .ring{width:84px;height:84px;}.cat-track{gap:22px;padding:0 calc(50% - 52px);}}
+
+/* Product reveal area */
+.orbit-products{margin-top:20px;min-height:120px;position:relative;text-align:left;color:var(--text);}
+.orbit-placeholder{text-align:center;padding:20px 20px 6px;color:var(--text-dim);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.orbit-placeholder p{margin-top:10px;font-size:14.5px;}
+.orbit-placeholder.hide{opacity:0;transform:translateY(10px);pointer-events:none;position:absolute;inset:0;}
+.orbit-grid-wrap{opacity:0;transform:translateY(24px) scale(.98);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.orbit-grid-wrap.show{opacity:1;transform:translateY(0) scale(1);}
+.orbit-grid-wrap.leaving{opacity:0;transform:translateY(-16px) scale(.98);}
+.orbit-grid-head{display:flex;align-items:center;gap:16px;padding:6px 4px 22px;}
+.orbit-grid-head .cat-icon{width:44px;height:44px;margin:0;flex-shrink:0;}
+.orbit-grid-head h3{font-size:clamp(22px,3vw,30px);}
+.orbit-grid-head p{color:var(--text-dim);font-size:13.5px;margin-top:2px;}
+.orbit-item-grid{padding:0;}
+@media(max-width:640px){.orbit-grid-head{flex-direction:column;text-align:center;}}
+
+
+.marquee{background:var(--ember);color:var(--ink);padding:14px 0;overflow:hidden;position:relative;}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 26s linear infinite;width:max-content;}
+.marquee-track span{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:48px;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.cat-icon{width:64px;height:64px;margin:14px 0 18px;border-radius:50%;overflow:hidden;box-shadow:0 8px 20px -8px rgba(0,0,0,.5), 0 0 0 3px var(--bg-elevated), 0 0 0 4px var(--line-strong);flex-shrink:0;}
+.cat-icon img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.05) brightness(1.02);}
+
+/* ---------- Modal (category & product) ---------- */
+.modal-overlay{
+  position:fixed;inset:0;z-index:800;background:rgba(10,8,6,.72);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s var(--ease);
+}
+.modal-overlay.open{opacity:1;visibility:visible;}
+@media(min-width:760px){.modal-overlay{align-items:center;padding:30px;}}
+.modal{
+  background:var(--bg-elevated);width:100%;max-width:960px;max-height:92vh;overflow-y:auto;
+  border-radius:26px 26px 0 0;border:1px solid var(--line);box-shadow:var(--shadow-hard);
+  transform:translateY(40px);transition:transform .5s var(--ease-soft);position:relative;
+}
+.modal-overlay.open .modal{transform:translateY(0);}
+@media(min-width:760px){.modal{border-radius:26px;}}
+.modal-close{position:sticky;top:18px;margin-left:auto;margin-right:18px;z-index:5;width:42px;height:42px;border-radius:50%;background:var(--bg-card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;float:right;}
+.modal-head{padding:36px 36px 0;display:flex;align-items:center;gap:18px;}
+.modal-head h3{font-size:clamp(26px,4vw,38px);}
+.modal-head p{color:var(--text-dim);font-size:14px;margin-top:4px;}
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;padding:28px 36px 40px;}
+.item-card{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;cursor:pointer;
+  transition:transform .4s var(--ease),border-color .4s var(--ease);position:relative;
+}
+.item-card:hover{transform:translateY(-5px);border-color:var(--ember);}
+.item-card .thumb{height:150px;overflow:hidden;position:relative;}
+.item-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+.item-card:hover .thumb img{transform:scale(1.09);}
+.item-card .tag{position:absolute;top:10px;left:10px;background:var(--ember);color:var(--ink);font-family:'Space Mono',monospace;font-size:10px;padding:4px 9px;border-radius:20px;letter-spacing:.08em;}
+.item-body{padding:16px 18px 20px;}
+.item-body h4{font-size:17px;font-family:'Fraunces',serif;font-weight:500;}
+.item-body .desc{font-size:12.5px;color:var(--text-dim);margin-top:5px;min-height:32px;}
+.item-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;}
+.price{font-family:'Space Mono',monospace;font-weight:700;color:var(--accent-text);font-size:15px;}
+.mini-add{width:34px;height:34px;border-radius:50%;background:var(--ember);color:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease);}
+.mini-add:hover{transform:scale(1.14) rotate(90deg);}
+
+/* ---------- Product detail modal ---------- */
+.product-modal .modal{max-width:840px;}
+.product-layout{display:grid;grid-template-columns:1fr;gap:0;}
+@media(min-width:720px){.product-layout{grid-template-columns:1fr 1fr;}}
+.product-photo{height:280px;position:relative;overflow:hidden;}
+@media(min-width:720px){.product-photo{height:100%;min-height:520px;}}
+.product-photo img{width:100%;height:100%;object-fit:cover;}
+.product-photo .tag{position:absolute;top:16px;left:16px;background:var(--ember);color:var(--ink);font-family:'Space Mono',monospace;font-size:11px;padding:5px 12px;border-radius:20px;}
+.product-info{padding:32px;display:flex;flex-direction:column;}
+.product-info h3{font-size:clamp(24px,3.4vw,32px);}
+.product-info .ingredients{font-size:13.5px;color:var(--text-faint);margin-top:8px;font-style:italic;}
+.product-info .desc{color:var(--text-dim);margin-top:16px;font-size:14.5px;}
+.product-price-row{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:20px;border-top:1px dashed var(--line-strong);}
+.product-price{font-family:'Space Mono',monospace;font-weight:700;font-size:26px;color:var(--accent-text);}
+.custom-block{margin-top:22px;}
+.custom-block h5{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;}
+.chip-row{display:flex;flex-wrap:wrap;gap:9px;}
+.chip{
+  padding:9px 15px;border-radius:20px;border:1px solid var(--line-strong);font-size:12.5px;font-weight:600;
+  transition:all .3s var(--ease);display:flex;align-items:center;gap:6px;
+}
+.chip:hover{border-color:var(--ember);}
+.chip.active{background:var(--ember);border-color:var(--ember);color:var(--ink);}
+.chip .plus{font-family:'Space Mono',monospace;font-size:11px;opacity:.7;}
+.qty-row{display:flex;align-items:center;gap:14px;margin-top:26px;}
+.qty-control{display:flex;align-items:center;border:1px solid var(--line-strong);border-radius:30px;}
+.qty-control button{width:40px;height:40px;font-size:18px;color:var(--text);}
+.qty-control span{width:34px;text-align:center;font-family:'Space Mono',monospace;font-weight:700;}
+.add-cart-btn{flex:1;position:relative;overflow:hidden;}
+.add-cart-btn .check{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--olive);transform:translateY(110%);transition:transform .4s var(--ease);}
+.add-cart-btn.added .check{transform:translateY(0);}
+
+/* ---------- Cart Drawer ---------- */
+.cart-drawer{
+  position:fixed;top:0;right:0;height:100vh;width:min(94vw,420px);background:var(--bg-elevated);z-index:900;
+  transform:translateX(100%);transition:transform .55s var(--ease-soft);box-shadow:var(--shadow-hard);
+  display:flex;flex-direction:column;border-left:1px solid var(--line);
+}
+.cart-drawer.open{transform:translateX(0);}
+.cart-head{padding:26px 26px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);}
+.cart-head h3{font-size:24px;}
+.cart-items{flex:1;overflow-y:auto;padding:18px 26px;}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--text-faint);}
+.cart-empty svg{width:56px;height:56px;margin:0 auto 16px;opacity:.4;}
+.cart-line{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);}
+.cart-line img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+.cart-line-body{flex:1;display:flex;flex-direction:column;}
+.cart-line-body .name{font-family:'Fraunces',serif;font-size:15.5px;}
+.cart-line-body .opts{font-size:11.5px;color:var(--text-faint);margin-top:2px;}
+.cart-line-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+.cart-line-foot .qty-control{transform:scale(.85);transform-origin:left center;}
+.remove-line{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-faint);text-decoration:underline;text-underline-offset:3px;}
+.remove-line:hover{color:var(--ember);}
+.cart-foot{padding:22px 26px 28px;border-top:1px solid var(--line);}
+.cart-subtotal{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:14px;margin-bottom:6px;color:var(--text-dim);}
+.cart-total{display:flex;justify-content:space-between;font-size:20px;font-family:'Fraunces',serif;margin:12px 0 18px;}
+.cart-total b{color:var(--accent-text);font-family:'Space Mono',monospace;}
+
+/* ---------- Checkout ---------- */
+.checkout-body{padding:10px 36px 40px;}
+.order-mode{display:flex;gap:10px;margin:20px 0 26px;}
+.order-mode button{flex:1;padding:14px;border-radius:14px;border:1px solid var(--line-strong);font-weight:700;font-size:13.5px;transition:all .3s var(--ease);}
+.order-mode button.active{background:var(--ember);border-color:var(--ember);color:var(--ink);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid .full{grid-column:1/-1;}
+.field label{font-size:11.5px;font-family:'Space Mono',monospace;letter-spacing:.08em;color:var(--text-faint);text-transform:uppercase;display:block;margin-bottom:7px;}
+.field input,.field textarea,.field select{
+  width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--line-strong);background:var(--bg-card);color:var(--text);font-size:14.5px;
+  transition:border-color .3s var(--ease);
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ember);}
+.checkout-summary{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:24px;font-size:13.5px;}
+.checkout-summary .row{display:flex;justify-content:space-between;padding:6px 0;color:var(--text-dim);}
+.checkout-summary .row.total{color:var(--text);font-weight:700;border-top:1px dashed var(--line-strong);margin-top:6px;padding-top:12px;font-family:'Space Mono',monospace;}
+.success-state{text-align:center;padding:60px 30px;}
+.success-state .ring{width:84px;height:84px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:pop .5s var(--ease-soft);}
+@keyframes pop{0%{transform:scale(0);}70%{transform:scale(1.14);}100%{transform:scale(1);}}
+.success-state h3{font-size:28px;margin-bottom:10px;}
+.success-state p{color:var(--text-dim);max-width:340px;margin:0 auto;}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr;}}
+.about-media{position:relative;}
+.about-media .frame{border-radius:var(--radius-l);overflow:hidden;box-shadow:var(--shadow-soft);position:relative;}
+.about-media img{width:100%;height:460px;object-fit:cover;}
+.about-media .badge-float{
+  position:absolute;bottom:-26px;left:-26px;background:var(--ember);color:var(--ink);border-radius:20px;
+  padding:20px 24px;box-shadow:var(--shadow-hard);max-width:220px;
+}
+.about-media .badge-float b{display:block;font-family:'Fraunces',serif;font-size:30px;}
+.about-media .badge-float span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-family:'Space Mono',monospace;opacity:.85;}
+.about-text h2{font-size:clamp(30px,4.6vw,48px);}
+.about-text p{color:var(--text-dim);margin-top:20px;font-size:15.5px;}
+.about-stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap;}
+.about-stats div b{font-family:'Fraunces',serif;font-size:34px;color:var(--accent-text);display:block;}
+.about-stats div span{font-size:11.5px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase;font-family:'Space Mono',monospace;}
+
+/* Chef */
+.chef-row{display:grid;grid-template-columns:1fr;gap:40px;margin-top:70px;}
+@media(min-width:900px){.chef-row{grid-template-columns:.8fr 1.2fr;align-items:center;}}
+.chef-photo{border-radius:var(--radius-l);overflow:hidden;position:relative;box-shadow:var(--shadow-soft);}
+.chef-photo img{width:100%;height:420px;object-fit:cover;filter:grayscale(15%);}
+.chef-photo .sig{position:absolute;bottom:18px;right:18px;font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);}
+.chef-quote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.4;}
+.chef-quote span{color:var(--accent-text);}
+.chef-name{margin-top:22px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--text-faint);}
+.chef-name b{color:var(--text);font-family:'Manrope',sans-serif;}
+
+/* ---------- Gallery ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:140px;gap:14px;}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;grid-row:span 2;}
+.gallery-item:nth-child(3n+1){grid-row:span 3;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.gallery-item:hover img{transform:scale(1.08);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));opacity:0;transition:opacity .4s;}
+.gallery-item:hover::after{opacity:1;}
+.gallery-item .zoom{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;}
+.gallery-item:hover .zoom{opacity:1;}
+.gallery-item .cap{position:absolute;left:14px;bottom:14px;color:#fff;font-family:'Space Mono',monospace;font-size:11px;opacity:0;transition:opacity .4s;letter-spacing:.05em;}
+.gallery-item:hover .cap{opacity:1;}
+
+.lightbox{position:fixed;inset:0;z-index:950;background:rgba(5,4,3,.94);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;}
+.lightbox.open{opacity:1;visibility:visible;}
+.lightbox img{max-width:88vw;max-height:80vh;border-radius:14px;box-shadow:var(--shadow-hard);animation:pop .4s var(--ease-soft);}
+.lightbox-close{position:absolute;top:26px;right:30px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;}
+.lightbox-nav.prev{left:24px;}.lightbox-nav.next{right:24px;}
+
+/* ---------- Testimonials ---------- */
+.testi-wrap{position:relative;max-width:760px;margin:0 auto;}
+.testi-track{overflow:hidden;}
+.testi-slides{display:flex;transition:transform .6s var(--ease-soft);}
+.testi-slide{min-width:100%;text-align:center;padding:10px 20px 0;}
+.testi-stars{color:var(--accent-text);font-size:18px;letter-spacing:3px;margin-bottom:20px;}
+.testi-slide p{font-family:'Fraunces',serif;font-size:clamp(19px,2.6vw,26px);font-style:italic;line-height:1.5;}
+.testi-person{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:28px;}
+.testi-person img{width:50px;height:50px;border-radius:50%;object-fit:cover;}
+.testi-person div{text-align:left;}
+.testi-person b{display:block;font-size:14.5px;}
+.testi-person span{font-size:12px;color:var(--text-faint);}
+.testi-dots{display:flex;justify-content:center;gap:10px;margin-top:36px;}
+.testi-dots button{width:8px;height:8px;border-radius:50%;background:var(--line-strong);transition:all .3s;}
+.testi-dots button.active{background:var(--ember);width:22px;border-radius:5px;}
+
+/* ---------- Reservation / Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:50px;}
+@media(min-width:940px){.contact-grid{grid-template-columns:1fr 1fr;}}
+.res-form{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-l);padding:36px;}
+.res-form h3{font-size:26px;margin-bottom:22px;}
+.contact-side{display:flex;flex-direction:column;gap:22px;}
+.info-card{display:flex;gap:16px;align-items:flex-start;background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:20px;}
+.info-card svg{width:22px;height:22px;color:var(--ember-light);flex-shrink:0;margin-top:2px;}
+.info-card b{display:block;font-size:14.5px;margin-bottom:2px;}
+.info-card span{font-size:13px;color:var(--text-dim);}
+.map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);height:220px;}
+.map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(35%) contrast(1.05);}
+.social-row{display:flex;gap:10px;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink-soft);color:var(--cream);padding:80px 0 30px;border-top:1px solid var(--line);}
+[data-theme="light"] footer{background:#1D1712;}
+.footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;}}
+.footer-brand p{color:#B9AF9D;font-size:14px;margin-top:14px;max-width:280px;}
+.footer-col h5{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#9A8F79;margin-bottom:16px;}
+.footer-col a,.footer-col p{display:block;color:#D8CFBE;font-size:14px;margin-bottom:10px;}
+.footer-col a:hover{color:var(--ember-light);}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:60px;padding-top:26px;border-top:1px solid rgba(246,239,226,.1);font-size:12.5px;color:#8A8071;}
+.footer-social{display:flex;gap:10px;margin-top:18px;}
+.footer-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(246,239,226,.18);display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.footer-social a:hover{border-color:var(--brass);background:rgba(233,228,216,.1);}
+.footer-social svg{width:16px;height:16px;}
+
+/* ---------- Toast ---------- */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120%);z-index:1000;
+  background:var(--ink-soft2);color:var(--cream);border:1px solid var(--line-strong);
+  padding:14px 22px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-hard);
+  transition:transform .5s var(--ease-soft);font-size:13.5px;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast .dot{width:8px;height:8px;border-radius:50%;background:var(--olive);}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- Misc ---------- */
+.divider-cut{height:1px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 10px,transparent 10px 20px);}
+.badge-inline{display:inline-flex;gap:8px;align-items:center;background:var(--bg-card);border:1px solid var(--line);padding:8px 14px;border-radius:30px;font-size:12px;color:var(--text-dim);}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:10px;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo-wrap">
+    <div class="loader-glow"></div>
+    <img src="assets/loqma-logo.jpg" alt="" class="loader-logo" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%2317120E%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-family=%27Georgia,serif%27 font-size=%2748%27 fill=%27%232FE1D4%27 text-anchor=%27middle%27%3EL%3C/text%3E%3C/svg%3E&quot;;">
+  </div>
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-text">Lo9ma</div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header id="header">
+  <div class="container nav-inner">
+    <a href="#home" class="brand">
+      <img src="assets/loqma-logo.jpg" alt="Lo9ma" class="brand-mark" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%2317120E%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-family=%27Georgia,serif%27 font-size=%2748%27 fill=%27%232FE1D4%27 text-anchor=%27middle%27%3EL%3C/text%3E%3C/svg%3E&quot;;">
+      <span class="sr-only">LO9MA — Street food premium</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#home">Accueil</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">À propos</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Contact</a>
+      <a href="#order" class="btn btn-primary btn-sm">Commander</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Basculer le mode clair / sombre">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke-linecap="round"/><circle cx="12" cy="12" r="4.5"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Voir le panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.8h7.6a2 2 0 0 0 2-1.6L21 8H6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="21" r="1.4" fill="currentColor" stroke="none"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Navigation mobile">
+  <a href="#home">Accueil</a>
+  <a href="#menu">Menu</a>
+  <a href="#about">À propos</a>
+  <a href="#gallery">Galerie</a>
+  <a href="#contact">Contact</a>
+  <a href="#order" class="btn btn-primary" style="margin-top:20px;">Commander en ligne</a>
+</nav>
+
+<!-- ============ HERO / ORBIT MENU ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1689150911817-3e27168ab6a3?auto=format&fit=crop&w=1800&h=1200&q=85')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1646473334251-827ea2e0b9ea?auto=format&fit=crop&w=1800&h=1200&q=85')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1512805147242-c3e79caf64bf?auto=format&fit=crop&w=1800&h=1200&q=85')"></div>
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-grain"></div>
+  <div class="embers" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow">Street food premium · Tunis</p>
+    <h1>Lo9ma, l'art de la<br><em>bouchée</em> parfaite</h1>
+    <p class="hero-sub">Pizzas, crêpes, makloub, plats signature et plus encore — faites tourner nos univers de saveurs autour de la marque et laissez-vous guider.</p>
+
+    <div class="orbit-system" id="menu">
+      <div class="carousel-logo">
+        <div class="orbit-core-glow" aria-hidden="true"></div>
+        <img src="assets/loqma-logo.jpg" alt="Lo9ma" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%2317120E%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-family=%27Georgia,serif%27 font-size=%2748%27 fill=%27%232FE1D4%27 text-anchor=%27middle%27%3EL%3C/text%3E%3C/svg%3E&quot;;">
+      </div>
+      <p class="carousel-hint"><span>◂</span> Faites glisser ou touchez une catégorie <span>▸</span></p>
+
+      <div class="cat-carousel-outer">
+        <div class="carousel-fade left" aria-hidden="true"></div>
+        <div class="carousel-fade right" aria-hidden="true"></div>
+        <button class="carousel-arrow prev" id="carPrev" aria-label="Catégorie précédente">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="cat-carousel" id="catCarousel">
+          <div class="cat-track" id="catTrack"></div>
+        </div>
+        <button class="carousel-arrow next" id="carNext" aria-label="Catégorie suivante">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="orbit-products" id="orbitProducts">
+        <div class="orbit-placeholder" id="orbitPlaceholder">
+          <span class="eyebrow" style="justify-content:center;">Votre sélection</span>
+          <p>Choisissez une catégorie ci-dessus pour découvrir nos créations.</p>
+        </div>
+        <div class="orbit-grid-wrap" id="orbitGridWrap" hidden>
+          <div class="orbit-grid-head">
+            <div class="cat-icon" id="orbitGridIcon"></div>
+            <div><span class="eyebrow" id="orbitGridEyebrow">Catégorie</span><h3 id="orbitGridTitle">—</h3><p id="orbitGridDesc"></p></div>
+          </div>
+          <div class="item-grid orbit-item-grid" id="orbitGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#order" class="btn btn-primary">Commander maintenant</a>
+      <a href="#about" class="btn btn-ghost">Notre histoire</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Défiler</span><span class="line"></span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" style="background:var(--bg-elevated);position:relative;overflow:hidden;">
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media reveal">
+        <div class="frame"><img id="aboutPhotoImg" src="https://images.unsplash.com/photo-1646473315764-c6cd47fe74c3?auto=format&fit=crop&w=900&h=920&q=85" alt="Intérieur chaleureux du restaurant Lo9ma" loading="lazy"></div>
+        <div class="badge-float"><b id="aboutBadgeNum">9+</b><span id="aboutBadgeLabel">Années de passion culinaire</span></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">Notre histoire</span>
+        <h2 id="aboutTitle">Née d'une flamme,<br>portée par la passion</h2>
+        <p id="aboutText1">Tout a commencé en 2016 dans une ruelle de Tunis, avec un simple four à bois et l'envie de réinventer le comfort food. Aujourd'hui, LO9MA réunit la tradition italienne de la pizza, la générosité du makloub tunisien et libanais, et la douceur des crêpes gourmandes — le tout sublimé par une exigence de qualité digne des plus grandes tables.</p>
+        <p id="aboutText2">Chaque produit est sélectionné avec soin, chaque pâte pétrie sur place, chaque sauce préparée maison. Le feu de bois n'est pas qu'une technique : c'est notre signature, notre âme.</p>
+        <div class="about-stats">
+          <div><b id="aboutStat1Num">40+</b><span id="aboutStat1Label">Créations signature</span></div>
+          <div><b id="aboutStat2Num">12k+</b><span id="aboutStat2Label">Clients comblés / an</span></div>
+          <div><b id="aboutStat3Num">4.9</b><span id="aboutStat3Label">Note moyenne</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chef-row reveal">
+      <div class="chef-photo">
+        <img id="chefPhotoImg" src="https://images.unsplash.com/photo-1759521296047-89338c8e083d?auto=format&fit=crop&w=700&h=840&q=85" alt="Chef exécutif de Lo9ma devant le four à bois" loading="lazy">
+        <span class="sig" id="chefSig">— Chef Karim</span>
+      </div>
+      <div>
+        <p class="chef-quote" id="chefQuote">« Je ne cuisine pas seulement des plats, je façonne des <span>souvenirs</span>. Chaque pizza sortie du four raconte une histoire de feu, de patience et d'amour du produit. »</p>
+        <p class="chef-name" id="chefName"><b>Karim Ben Amor</b> — Chef exécutif &amp; fondateur, 18 ans d'expérience entre Naples, Beyrouth et Tunis</p>
+        <div class="hero-ctas" style="justify-content:flex-start;margin-top:30px;">
+          <a href="#gallery" class="btn btn-ghost btn-sm">Voir la brigade en action</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Galerie</span>
+      <h2>Un festin<br>pour les yeux</h2>
+      <p>Un aperçu de nos créations, de notre ambiance et de nos coulisses.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" style="background:var(--bg-elevated);">
+  <div class="container">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">Avis clients</span>
+      <h2>Ce qu'ils en disent</h2>
+    </div>
+    <div class="testi-wrap reveal">
+      <div class="testi-track">
+        <div class="testi-slides" id="testiSlides"></div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / RESERVATION ============ -->
+<section class="section" id="contact" style="position:relative;overflow:hidden;">
+  <div class="ambient-orb orb-3" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Réservation &amp; contact</span>
+      <h2>Réservez votre table</h2>
+      <p>Un dîner en tête-à-tête ou une soirée entre amis — nous préparons votre place près du feu.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="res-form reveal" id="resForm">
+        <h3>Réserver une table</h3>
+        <div class="form-grid">
+          <div class="field"><label for="rName">Nom complet</label><input id="rName" required placeholder="Votre nom"></div>
+          <div class="field"><label for="rPhone">Téléphone</label><input id="rPhone" required placeholder="+216 XX XXX XXX"></div>
+          <div class="field"><label for="rDate">Date</label><input id="rDate" type="date" required></div>
+          <div class="field"><label for="rTime">Heure</label><input id="rTime" type="time" required></div>
+          <div class="field"><label for="rGuests">Convives</label>
+            <select id="rGuests"><option>1 personne</option><option selected>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5+ personnes</option></select>
+          </div>
+          <div class="field"><label for="rOccasion">Occasion</label>
+            <select id="rOccasion"><option>Dîner classique</option><option>Anniversaire</option><option>Rendez-vous d'affaires</option><option>Célébration</option></select>
+          </div>
+          <div class="field full"><label for="rNote">Note (optionnel)</label><textarea id="rNote" rows="3" placeholder="Allergies, préférences de table..."></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:22px;width:100%;">Confirmer la réservation</button>
+      </form>
+      <div class="contact-side reveal">
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Adresse</b><span id="infoAddress">12 Avenue Habib Bourguiba, Tunis, Tunisie</span></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><b>Téléphone</b><span id="infoPhone">+216 71 234 567</span></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <div><b>Email</b><span id="infoEmail">bonjour@lo9ma-tn.com</span></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div><b>Horaires</b><span id="infoHours">Tous les jours · 11h00 – 00h00</span></div>
+        </div>
+        <div class="map-wrap"><iframe id="mapFrame" title="Localisation Lo9ma sur Google Maps" loading="lazy" src="https://www.google.com/maps?q=Avenue%20Habib%20Bourguiba%2C%20Tunis&output=embed"></iframe></div>
+        <div class="social-row">
+          <a href="#" id="socialInstagram" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" id="socialFacebook" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v6h4v-6h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" id="socialTiktok" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c0 2.5 2 4.5 4.5 4.5V11c-1.6 0-3-.5-4.5-1.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER STRIP ============ -->
+<section class="section" id="order" style="padding:80px 0;background:linear-gradient(120deg,var(--ink),var(--ink-soft));color:var(--cream);">
+  <div class="container" style="text-align:center;">
+    <span class="eyebrow" style="justify-content:center;">Commande en ligne</span>
+    <h2 style="margin-top:14px;font-size:clamp(28px,4.6vw,44px);color:var(--cream);">Envie de Lo9ma ce soir ?</h2>
+    <p style="color:var(--text-dim);max-width:480px;margin:16px auto 0;">Composez votre panier depuis notre menu interactif et finalisez votre commande en quelques secondes.</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn btn-brass">Composer ma commande</a>
+      <button class="btn btn-ghost" id="openCartFromOrder">Voir mon panier</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><img src="assets/loqma-logo.jpg" alt="Lo9ma" class="brand-mark" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%2317120E%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-family=%27Georgia,serif%27 font-size=%2748%27 fill=%27%232FE1D4%27 text-anchor=%27middle%27%3EL%3C/text%3E%3C/svg%3E&quot;;"><span>LO9MA</span></a>
+        <p id="footerTagline">Street food premium au cœur de Tunis. Recettes signature, produits frais, service d'exception.</p>
+        <div class="footer-social">
+          <a href="#" id="footerSocialInstagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#" id="footerSocialFacebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v6h4v-6h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" id="footerSocialTiktok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="#home">Accueil</a><a href="#menu">Menu</a><a href="#about">À propos</a><a href="#gallery">Galerie</a>
+      </div>
+      <div class="footer-col">
+        <h5>Carte</h5>
+        <a href="#menu">Pizzas</a><a href="#menu">Crêpes</a><a href="#menu">Makloub</a><a href="#menu">Plats</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p id="footerAddress">12 Av. Habib Bourguiba, Tunis</p><p id="footerPhone">+216 71 234 567</p><p id="footerEmail">bonjour@lo9ma-tn.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="footerCopyright">© 2026 LO9MA. Tous droits réservés.</span>
+      <span>Design cinématique · Fait avec feu à Tunis</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
+  <div class="cart-head">
+    <h3>Votre panier</h3>
+    <button class="icon-btn" id="closeCart" aria-label="Fermer le panier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot"></div>
+</aside>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal" style="max-width:640px;">
+    <button class="modal-close" id="closeCheckout" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg></button>
+    <div class="modal-head" style="padding-top:10px;">
+      <div><span class="eyebrow">Finaliser</span><h3 style="margin-top:8px;">Votre commande</h3></div>
+    </div>
+    <div class="checkout-body" id="checkoutBody"></div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT MODAL ============ -->
+<div class="modal-overlay product-modal" id="productOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeProduct" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg></button>
+    <div class="product-layout" id="productLayout"></div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg></button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"><span class="dot"></span><span id="toastMsg">Ajouté au panier</span></div>
+
+<script>
+/* ============================================================
+   ICONS — category line-art (stroke-based, consistent style)
+   ============================================================ */
+const ICONS = {
+  pizza:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M32 6 58 54H6L32 6Z"/><circle cx="26" cy="30" r="2.4" fill="currentColor" stroke="none"/><circle cx="36" cy="24" r="2.4" fill="currentColor" stroke="none"/><circle cx="32" cy="40" r="2.4" fill="currentColor" stroke="none"/><path d="M6 54h52" stroke-dasharray="2 4"/></svg>`,
+  crepe:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M8 20c8-10 40-10 48 0-4 22-14 34-24 34S12 42 8 20Z"/><path d="M14 22c6 4 30 4 36 0" stroke-dasharray="2 4"/></svg>`,
+  makloub:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 26h44l-6 20a6 6 0 0 1-6 4H22a6 6 0 0 1-6-4L10 26Z"/><path d="M10 26c0-8 6-14 22-14s22 6 22 14"/><path d="M20 34h24M22 42h20"/></svg>`,
+  lebanese:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="32" cy="32" rx="24" ry="14"/><path d="M12 32c6-8 34-8 40 0M14 38c6 6 30 6 36 0"/></svg>`,
+  plats:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="32" cy="34" r="22"/><circle cx="32" cy="34" r="13"/><path d="M18 12v10M14 12v6a4 4 0 0 0 4 4M50 12v10"/></svg>`,
+  fries:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M14 28 10 54h44l-4-26"/><path d="M18 28V14M26 28V10M34 28V11M42 28V15M50 28V20"/></svg>`,
+  sauces:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M26 8h12l2 10-16 0 2-10Z"/><path d="M22 18h20l4 8a16 16 0 0 1-28 0l4-8Z"/><path d="M22 34h20l-2 18a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4l-2-18Z"/></svg>`,
+  extras:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="24" r="12"/><circle cx="40" cy="40" r="12"/><path d="M24 24l4 4M40 40l-4-4"/></svg>`,
+  drinks:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M18 10h28l-4 12v28a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V22L18 10Z"/><path d="M17 10h30M22 22h20"/></svg>`,
+  flame:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c3 4 6 7 6 12a6 6 0 1 1-12 0c0-2.2.8-4 2-5.6-.4 2.2.4 3.6 1.2 3.6.8 0-.4-3.2 2.8-10z"/></svg>`
+};
+function img(id,w=600,h=450){return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;}
+function imgTag(tag,lock,w=200,h=200){return `https://loremflickr.com/${w}/${h}/${tag}?lock=${lock}`;}
+
+/* ===EDITABLE_DATA_START=== */
+const SITE_INFO = {
+  whatsappNumber:'21671234567',
+  about:{
+    photo:'https://images.unsplash.com/photo-1646473315764-c6cd47fe74c3?auto=format&fit=crop&w=900&h=920&q=85',
+    badgeNum:'9+', badgeLabel:'Années de passion culinaire',
+    title:'Née d\'une flamme,<br>portée par la passion',
+    text1:'Tout a commencé en 2016 dans une ruelle de Tunis, avec un simple four à bois et l\'envie de réinventer le comfort food. Aujourd\'hui, LO9MA réunit la tradition italienne de la pizza, la générosité du makloub tunisien et libanais, et la douceur des crêpes gourmandes — le tout sublimé par une exigence de qualité digne des plus grandes tables.',
+    text2:'Chaque produit est sélectionné avec soin, chaque pâte pétrie sur place, chaque sauce préparée maison. Le feu de bois n\'est pas qu\'une technique : c\'est notre signature, notre âme.',
+    stat1Num:'40+', stat1Label:'Créations signature',
+    stat2Num:'12k+', stat2Label:'Clients comblés / an',
+    stat3Num:'4.9', stat3Label:'Note moyenne'
+  },
+  chef:{
+    photo:'https://images.unsplash.com/photo-1759521296047-89338c8e083d?auto=format&fit=crop&w=700&h=840&q=85',
+    sig:'— Chef Karim',
+    quote:'« Je ne cuisine pas seulement des plats, je façonne des <span>souvenirs</span>. Chaque pizza sortie du four raconte une histoire de feu, de patience et d\'amour du produit. »',
+    name:'<b>Karim Ben Amor</b> — Chef exécutif &amp; fondateur, 18 ans d\'expérience entre Naples, Beyrouth et Tunis'
+  },
+  contact:{
+    address:'12 Avenue Habib Bourguiba, Tunis, Tunisie',
+    phone:'+216 71 234 567',
+    email:'bonjour@lo9ma-tn.com',
+    hours:'Tous les jours · 11h00 – 00h00',
+    mapEmbedUrl:'https://www.google.com/maps?q=Avenue%20Habib%20Bourguiba%2C%20Tunis&output=embed',
+    instagram:'#', facebook:'#', tiktok:'#'
+  },
+  footer:{
+    tagline:'Street food premium au cœur de Tunis. Recettes signature, produits frais, service d\'exception.',
+    copyright:'© 2026 LO9MA. Tous droits réservés.'
+  }
+};
+
+function renderSiteInfo(){
+  const a=SITE_INFO.about, c=SITE_INFO.chef, k=SITE_INFO.contact, f=SITE_INFO.footer;
+  document.getElementById('aboutPhotoImg').src=a.photo;
+  document.getElementById('aboutBadgeNum').textContent=a.badgeNum;
+  document.getElementById('aboutBadgeLabel').textContent=a.badgeLabel;
+  document.getElementById('aboutTitle').innerHTML=a.title;
+  document.getElementById('aboutText1').textContent=a.text1;
+  document.getElementById('aboutText2').textContent=a.text2;
+  document.getElementById('aboutStat1Num').textContent=a.stat1Num;
+  document.getElementById('aboutStat1Label').textContent=a.stat1Label;
+  document.getElementById('aboutStat2Num').textContent=a.stat2Num;
+  document.getElementById('aboutStat2Label').textContent=a.stat2Label;
+  document.getElementById('aboutStat3Num').textContent=a.stat3Num;
+  document.getElementById('aboutStat3Label').textContent=a.stat3Label;
+  document.getElementById('chefPhotoImg').src=c.photo;
+  document.getElementById('chefSig').textContent=c.sig;
+  document.getElementById('chefQuote').innerHTML=c.quote;
+  document.getElementById('chefName').innerHTML=c.name;
+  document.getElementById('infoAddress').textContent=k.address;
+  document.getElementById('infoPhone').textContent=k.phone;
+  document.getElementById('infoEmail').textContent=k.email;
+  document.getElementById('infoHours').textContent=k.hours;
+  document.getElementById('mapFrame').src=k.mapEmbedUrl;
+  document.getElementById('socialInstagram').href=k.instagram;
+  document.getElementById('socialFacebook').href=k.facebook;
+  document.getElementById('socialTiktok').href=k.tiktok;
+  document.getElementById('footerTagline').textContent=f.tagline;
+  document.getElementById('footerSocialInstagram').href=k.instagram;
+  document.getElementById('footerSocialFacebook').href=k.facebook;
+  document.getElementById('footerSocialTiktok').href=k.tiktok;
+  document.getElementById('footerAddress').textContent=k.address;
+  document.getElementById('footerPhone').textContent=k.phone;
+  document.getElementById('footerEmail').textContent=k.email;
+  document.getElementById('footerCopyright').textContent=f.copyright;
+}
+renderSiteInfo();
+
+/* ============================================================
+   MENU DATA
+   ============================================================ */
+const MENU = {
+  pizza:{
+    label:'Pizzas', icon:'pizza', photo:img('1565299624946-b28f40a0ae38',400,400),
+    desc:'Pâte fermentée 48h, cuisson au feu de bois, ingrédients premium.',
+    items:[
+      {id:'pz1',name:'Pepperoni',desc:'Sauce tomate San Marzano, mozzarella, pepperoni épicé',ingredients:'Tomate, mozzarella, pepperoni, origan',price:19.5,img:img('1534308983496-4fabb1a015ee'),tag:'Best-seller'},
+      {id:'pz2',name:'Neptune',desc:'Crème, mozzarella, thon, fruits de mer, olives noires',ingredients:'Crème, mozzarella, thon, fruits de mer, olives',price:23,img:img('1564936281291-294551497d81')},
+      {id:'pz3',name:'Margherita',desc:'Tomate, mozzarella di bufala, basilic frais, huile d\'olive',ingredients:'Tomate, mozzarella, basilic, huile d\'olive',price:16,img:img('1574071318508-1cdbab80d002'),tag:'Classique'},
+      {id:'pz4',name:'4 Fromages',desc:'Mozzarella, gorgonzola, chèvre, parmesan sur crème fraîche',ingredients:'Mozzarella, gorgonzola, chèvre, parmesan',price:21,img:img('1593504049359-74330189a345')},
+      {id:'pz5',name:'Végétarienne',desc:'Poivrons, champignons, oignons rouges, olives, roquette',ingredients:'Légumes grillés de saison, roquette',price:18,img:img('1595854341625-f33ee10dbf94')},
+      {id:'pz6',name:'Fruits de Mer',desc:'Crevettes, calamars, moules, ail confit, persil',ingredients:'Fruits de mer, ail, persil, citron',price:25.5,img:img('1682264788192-9abdec90c425'),tag:'Signature'},
+      {id:'pz7',name:'Mexicaine',desc:'Bœuf épicé, poivrons, maïs, jalapeños, sauce piquante',ingredients:'Bœuf haché, jalapeños, maïs, poivrons',price:20.5,img:img('1549118060-fd6cb65d5a15')},
+      {id:'pz8',name:'Chicken BBQ',desc:'Poulet grillé, sauce barbecue maison, oignons caramélisés',ingredients:'Poulet, sauce BBQ, oignons, mozzarella',price:21.5,img:img('1627626775846-122b778965ae')},
+      {id:'pz9',name:'Royal',desc:'Jambon de dinde, champignons, mozzarella, olives',ingredients:'Jambon, champignons, mozzarella, olives',price:19,img:img('1579751626657-72bc17010498')},
+      {id:'pz10',name:'Calzone',desc:'Pizza pliée farcie ricotta, jambon, mozzarella, œuf',ingredients:'Ricotta, jambon, mozzarella, œuf',price:20,img:img('1571066811602-716837d681de')},
+      {id:'pz11',name:'Orientale',desc:'Merguez, poivrons, harissa maison, œuf, olives',ingredients:'Merguez, harissa, poivrons, œuf',price:19.5,img:img('1589187151053-5ec8818e661b'),tag:'Épicé'},
+      {id:'pz12',name:'Thon',desc:'Thon, câpres, oignons rouges, olives noires, origan',ingredients:'Thon, câpres, oignons, olives',price:18.5,img:img('1613564834361-9436948817d1')},
+      {id:'pzm1',name:'Pizza Mètre',desc:'Notre pizza XXL à partager, coupée en parts généreuses. Choisissez la taille et vos garnitures.',ingredients:'Base tomate & mozzarella + garnitures au choix',price:0,img:img('1600028068383-ea11a7a101f3'),tag:'XXL à partager',
+        sizes:[
+          {label:'Demi-mètre (6-8 parts)', price:35},
+          {label:'Mètre entier (12-14 parts)', price:65}
+        ],
+        toppingsList:[
+          {name:'Mozzarella extra', price:3},
+          {name:'Pepperoni', price:4},
+          {name:'Champignons', price:2.5},
+          {name:'Poivrons', price:2.5},
+          {name:'Olives', price:2},
+          {name:'Thon', price:4},
+          {name:'Poulet grillé', price:4.5},
+          {name:'Merguez', price:4},
+          {name:'Fruits de mer', price:6},
+          {name:'Roquette', price:2}
+        ]
+      }
+    ]
+  },
+  crepe:{
+    label:'Crêpes', icon:'crepe', photo:img('1656057205408-4a0a62cf2dfb',400,400),
+    desc:'Crêpes fines dorées, garnies à la minute, sucrées ou gourmandes.',
+    items:[
+      {id:'cr1',name:'Nutella',desc:'Généreuse couche de Nutella fondant, amandes effilées',ingredients:'Pâte, Nutella, amandes',price:9,img:img('1734056650036-7002ede7b8f8'),tag:'Best-seller'},
+      {id:'cr2',name:'Kinder',desc:'Crème Kinder, morceaux de chocolat Kinder Bueno',ingredients:'Pâte, crème Kinder, Kinder Bueno',price:11,img:img('1515467837915-15c4777ba46a')},
+      {id:'cr3',name:'Oreo',desc:'Crème vanille, biscuits Oreo concassés, coulis chocolat',ingredients:'Pâte, crème vanille, Oreo, chocolat',price:11,img:img('1565087170449-fa23854a6100')},
+      {id:'cr4',name:'Lotus',desc:'Pâte de spéculoos Lotus, biscuits croustillants',ingredients:'Pâte, crème Lotus, biscuits Lotus',price:11,img:img('1731173432456-03df445fad64')},
+      {id:'cr5',name:'Banane Chocolat',desc:'Bananes fraîches, chocolat fondu, chantilly maison',ingredients:'Pâte, banane, chocolat, chantilly',price:10,img:img('1693857230386-ce2e29512ab0')},
+      {id:'cr6',name:'Fruits Frais',desc:'Fraises, bananes, kiwis, coulis de fruits rouges',ingredients:'Pâte, fruits de saison, coulis',price:12,img:img('1637036124732-cb0fab13bb15'),tag:'Fraîcheur'},
+      {id:'cr7',name:'Composez la vôtre',desc:'Choisissez votre base et vos toppings signature',ingredients:'Base au choix + toppings',price:8,img:img('1519676867240-f03562e64548'),tag:'Personnalisable'}
+    ]
+  },
+  makloub:{
+    label:'Makloub', icon:'makloub', photo:img('1733507100601-323ca84d7277',400,400),
+    desc:'Le sandwich tunisien plié à la minute, croustillant et généreux.',
+    items:[
+      {id:'mk1',name:'Makloub Thon',desc:'Thon, œuf, olives, harissa, fromage fondu',ingredients:'Thon, œuf, olives, harissa, fromage',price:9.5,img:img('1662116765994-1e4200c43589'),tag:'Best-seller'},
+      {id:'mk2',name:'Makloub Escalope',desc:'Escalope de poulet panée, fromage, sauce blanche',ingredients:'Escalope, fromage, sauce blanche, salade',price:11,img:img('1719282431565-3b30bb7d2658')},
+      {id:'mk3',name:'Makloub Merguez',desc:'Merguez grillée, poivrons, harissa, fromage',ingredients:'Merguez, poivrons, harissa, fromage',price:10.5,img:img('1699728088614-7d1d4277414b'),tag:'Épicé'},
+      {id:'mk4',name:'Makloub Œuf & Fromage',desc:'Double œuf, fromage fondant, olives, sauce algérienne',ingredients:'Œuf, fromage, olives, sauce algérienne',price:8,img:img('1719282431723-9d0f4370d4bc')},
+      {id:'mk5',name:'Makloub Viande Hachée',desc:'Viande hachée épicée, oignons, poivrons, fromage',ingredients:'Viande hachée, oignons, poivrons, fromage',price:11.5,img:img('1699728088600-6d684acbeada')}
+    ]
+  },
+  lebanese:{
+    label:'Libanais', icon:'lebanese', photo:img('1529006557810-274b9b2fc783',400,400),
+    desc:'Galette libanaise moelleuse garnie de saveurs du Levant.',
+    items:[
+      {id:'lb1',name:'Zaatar & Fromage',desc:'Zaatar, fromage fondu, tomates fraîches, menthe',ingredients:'Zaatar, fromage, tomate, menthe',price:9,img:img('1626700051175-6818013e1d4f'),tag:'Traditionnel'},
+      {id:'lb2',name:'Poulet Shawarma',desc:'Poulet mariné aux épices libanaises, sauce toum, pickles',ingredients:'Poulet shawarma, sauce toum, pickles',price:12,img:img('1529006557810-274b9b2fc783'),tag:'Best-seller'},
+      {id:'lb3',name:'Halloumi Grillé',desc:'Halloumi grillé, roquette, tomates confites, miel',ingredients:'Halloumi, roquette, tomates confites, miel',price:11,img:img('1646530208887-8a791bff4701')},
+      {id:'lb4',name:'Kafta Libanaise',desc:'Kafta grillée, oignons, persil, sumac, sauce tahini',ingredients:'Kafta, oignons, persil, sumac, tahini',price:12.5,img:img('1601356616077-695728ae17cb')}
+    ]
+  },
+  plats:{
+    label:'Plats', icon:'plats', photo:img('1683315446874-e6a629087ef8',400,400),
+    desc:'Créations signature dressées avec soin, pour un dîner mémorable.',
+    items:[
+      {id:'pl1',name:'Escalope Milanaise',desc:'Escalope panée croustillante, purée truffée, légumes',ingredients:'Poulet, panure, purée, légumes de saison',price:28,img:img('1600891964092-4316c288032e'),tag:'Signature'},
+      {id:'pl2',name:'Filet de Poulet Grillé',desc:'Filet mariné aux herbes, riz pilaf, sauce jus',ingredients:'Poulet, riz pilaf, herbes, jus',price:26,img:img('1601356616077-695728ae17cb')},
+      {id:'pl3',name:'Entrecôte Grillée',desc:'Entrecôte de bœuf, frites maison, sauce au poivre',ingredients:'Bœuf, frites, sauce au poivre',price:34,img:img('1565299715199-866c917206bb'),tag:'Premium'},
+      {id:'pl4',name:'Saumon Grillé',desc:'Pavé de saumon, légumes vapeur, beurre citronné',ingredients:'Saumon, légumes, beurre citronné',price:32,img:img('1519708227418-c8fd9a32b7a2')},
+      {id:'pl5',name:'Pâtes Alfredo',desc:'Tagliatelles, sauce crémeuse au parmesan, poulet grillé',ingredients:'Pâtes, crème, parmesan, poulet',price:22,img:img('1768668053140-f589ed4bef31')},
+      {id:'pl6',name:'Couscous Royal',desc:'Semoule fine, agneau, merguez, poulet, légumes',ingredients:'Semoule, agneau, merguez, poulet, légumes',price:29,img:img('1762631934518-f75e233413ca'),tag:'Traditionnel'}
+    ]
+  },
+  fries:{
+    label:'Frites', icon:'fries', photo:img('1630384060421-cb20d0e0649d',400,400),
+    desc:'Pommes de terre sélectionnées, double cuisson, croustillant garanti.',
+    items:[
+      {id:'fr1',name:'Frites Classic',desc:'Frites maison croustillantes, fleur de sel',ingredients:'Pommes de terre, sel',price:6,img:img('1585109649139-366815a0d713')},
+      {id:'fr2',name:'Frites Cheddar',desc:'Frites nappées de sauce cheddar fondante',ingredients:'Pommes de terre, sauce cheddar',price:8.5,img:img('1605262157780-8910063b2bf9'),tag:'Gourmand'},
+      {id:'fr3',name:'Frites Loaded',desc:'Frites, viande hachée épicée, fromage, sauce algérienne',ingredients:'Pommes de terre, viande, fromage, sauce',price:12,img:img('1717588874169-da2ba5ec3ec2'),tag:'Best-seller'}
+    ]
+  },
+  sauces:{
+    label:'Sauces', icon:'sauces', photo:img('1563599175592-c58dc214deff',400,400),
+    desc:'Sauces maison préparées chaque jour, pour twister vos plats.',
+    items:[
+      {id:'sc1',name:'Sauce Algérienne',desc:'La signature maison, relevée et crémeuse',ingredients:'Mayo, harissa, épices',price:1.5,img:img('1563599175592-c58dc214deff')},
+      {id:'sc2',name:'Harissa Maison',desc:'Piment, ail, épices torréfiées',ingredients:'Piment, ail, épices',price:1.5,img:img('1615810227931-4d9f62fd02aa'),tag:'Épicé'},
+      {id:'sc3',name:'Sauce Blanche',desc:'Yaourt, ail, herbes fraîches',ingredients:'Yaourt, ail, herbes',price:1.5,img:img('1499126167718-c87f5c1387e8')},
+      {id:'sc4',name:'Sauce Samurai',desc:'Piquante et fumée, notes de paprika',ingredients:'Mayo, piment, paprika fumé',price:1.5,img:img('1608949621301-dc970e104c90')},
+      {id:'sc5',name:'Barbecue',desc:'Sauce BBQ fumée légèrement sucrée',ingredients:'Tomate, épices, fumée',price:1.5,img:img('1472476443507-c7a5948772fc')},
+      {id:'sc6',name:'Ketchup / Mayo',desc:'Les incontournables, qualité premium',ingredients:'Tomate ou œuf/huile',price:1,img:img('1635452067171-5d71fa2807f2')}
+    ]
+  },
+  extras:{
+    label:'Extras', icon:'extras', photo:img('1634657443172-efbae44fd04b',400,400),
+    desc:'Personnalisez votre commande avec nos suppléments premium.',
+    items:[
+      {id:'ex1',name:'Fromage Extra',desc:'Supplément mozzarella fondante',ingredients:'Mozzarella',price:2.5,img:img('1594007654729-407eedc4be65')},
+      {id:'ex2',name:'Olives',desc:'Olives noires ou vertes marinées',ingredients:'Olives',price:1.5,img:img('1634657443172-efbae44fd04b')},
+      {id:'ex3',name:'Champignons',desc:'Champignons de Paris sautés',ingredients:'Champignons',price:2,img:img('1512595765784-5ebad80772a3')},
+      {id:'ex4',name:'Piment Frais',desc:'Piment vert ou jalapeños',ingredients:'Piment',price:1.5,img:img('1615810227931-4d9f62fd02aa')},
+      {id:'ex5',name:'Œuf',desc:'Œuf fermier au plat ou dur',ingredients:'Œuf',price:2,img:img('1691480184494-d9f822edd4d1')},
+      {id:'ex6',name:'Viande Hachée Extra',desc:'Supplément viande hachée épicée',ingredients:'Bœuf haché, épices',price:3.5,img:img('1588347818036-558601350947')}
+    ]
+  },
+  drinks:{
+    label:'Boissons', icon:'drinks', photo:img('1527960392543-80cd0fa46382',400,400),
+    desc:'Boissons fraîches et rafraîchissantes pour accompagner votre repas.',
+    items:[
+      {id:'dr1',name:'Coca-Cola',desc:'Bouteille 33cl bien fraîche',ingredients:'Boisson gazeuse',price:3.5,img:img('1527960392543-80cd0fa46382')},
+      {id:'dr2',name:'Coca Zero',desc:'Sans sucre, tout le goût',ingredients:'Boisson gazeuse zéro',price:3.5,img:img('1543253687-c931c8e01820')},
+      {id:'dr3',name:'Fanta / Sprite',desc:'Bouteille 33cl au choix',ingredients:'Boisson gazeuse',price:3.5,img:img('1625740822008-e45abf4e01d5')},
+      {id:'dr4',name:'Eau Minérale',desc:'50cl plate ou pétillante',ingredients:'Eau minérale',price:2,img:img('1524802020103-aa46eaffcaa2')},
+      {id:'dr5',name:'Jus d\'Orange Frais',desc:'Pressé minute, 100% naturel',ingredients:'Oranges fraîches',price:6,img:img('1650547002676-7cd5dea3175e'),tag:'Frais'},
+      {id:'dr6',name:'Citronnade Maison',desc:'Citron, menthe fraîche, sucre de canne',ingredients:'Citron, menthe, sucre de canne',price:6.5,img:img('1618799805265-4f27cb61ede9'),tag:'Signature'},
+      {id:'dr7',name:'Boisson Énergisante',desc:'Canette 25cl bien fraîche',ingredients:'Boisson énergisante',price:5,img:img('1581006852262-e4307cf6283a')}
+    ]
+  }
+};
+const CAT_ORDER = ['pizza','crepe','makloub','lebanese','plats','fries','sauces','extras','drinks'];
+const GALLERY=[
+  {img:'https://images.unsplash.com/photo-1627626775846-122b778965ae?auto=format&fit=crop&w=700&h=900&q=80',cap:'Cuisson au feu de bois'},
+  {img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&h=500&q=80',cap:'Pizza Margherita'},
+  {img:'https://images.unsplash.com/photo-1734056650036-7002ede7b8f8?auto=format&fit=crop&w=700&h=500&q=80',cap:'Crêpe Nutella'},
+  {img:'https://images.unsplash.com/photo-1683315446874-e6a629087ef8?auto=format&fit=crop&w=700&h=900&q=80',cap:'Ambiance du soir'},
+  {img:'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=700&h=500&q=80',cap:'Makloub signature'},
+  {img:'https://images.unsplash.com/photo-1601356616077-695728ae17cb?auto=format&fit=crop&w=700&h=500&q=80',cap:'Dressage minute'},
+  {img:'https://images.unsplash.com/photo-1527960471264-932f39eb5846?auto=format&fit=crop&w=700&h=900&q=80',cap:'Bar à boissons'},
+  {img:'https://images.unsplash.com/photo-1717588874169-da2ba5ec3ec2?auto=format&fit=crop&w=700&h=500&q=80',cap:'Frites Loaded'},
+  {img:'https://images.unsplash.com/photo-1634657443172-efbae44fd04b?auto=format&fit=crop&w=700&h=500&q=80',cap:'Ingrédients frais'}
+];
+/* ===EDITABLE_DATA_END=== */
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let CART = []; // {lineId, id, name, price, qty, img, opts:[strings]}
+let currentProduct = null;
+let productChips = new Set();
+let productSize = null;
+
+/* ============================================================
+   INIT — Loader
+   ============================================================ */
+window.addEventListener('load',()=>{ setTimeout(()=>document.getElementById('loader').classList.add('hidden'),500); });
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+const body=document.body, themeToggle=document.getElementById('themeToggle');
+themeToggle.addEventListener('click',()=>{
+  const cur = body.getAttribute('data-theme');
+  body.setAttribute('data-theme', cur==='dark'?'light':'dark');
+});
+
+/* ============================================================
+   NAV SCROLL / MOBILE MENU
+   ============================================================ */
+const headerEl=document.getElementById('header');
+window.addEventListener('scroll',()=>{ headerEl.classList.toggle('scrolled', window.scrollY>40); },{passive:true});
+const burger=document.getElementById('burger'), mobileMenu=document.getElementById('mobileMenu'), scrim=document.getElementById('scrim');
+function toggleMobile(open){
+  burger.classList.toggle('active',open);
+  mobileMenu.classList.toggle('open',open);
+  scrim.classList.toggle('show',open);
+  burger.setAttribute('aria-expanded',open);
+}
+burger.addEventListener('click',()=>toggleMobile(!mobileMenu.classList.contains('open')));
+scrim.addEventListener('click',()=>{toggleMobile(false); closeAllOverlays();});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMobile(false)));
+
+/* ============================================================
+   HERO SLIDESHOW
+   ============================================================ */
+const heroSlides=document.querySelectorAll('.hero-slide');
+const heroDotsWrap=document.getElementById('heroDots');
+heroSlides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  if(i===0)b.classList.add('active');
+  b.addEventListener('click',()=>setHeroSlide(i));
+  heroDotsWrap.appendChild(b);
+});
+let heroIndex=0;
+function setHeroSlide(i){
+  heroSlides[heroIndex].classList.remove('active');
+  heroDotsWrap.children[heroIndex].classList.remove('active');
+  heroIndex=i;
+  heroSlides[heroIndex].classList.add('active');
+  heroDotsWrap.children[heroIndex].classList.add('active');
+}
+setInterval(()=>setHeroSlide((heroIndex+1)%heroSlides.length),7000);
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+const marqueeWords=['Pizza au feu de bois','Crêpes Gourmandes','Makloub Signature','Libanais','Plats d\'Exception','Frites Croustillantes','Sauces Maison','Boissons Fraîches'];
+const marqueeTrack=document.getElementById('marqueeTrack');
+let mHtml='';
+for(let r=0;r<2;r++){ mHtml+='<span>'+marqueeWords.map(w=>`${w} ${ICONS.flame}`).join('')+'</span>'; }
+marqueeTrack.innerHTML=mHtml;
+
+/* ============================================================
+   CATEGORY CAROUSEL — coverflow with auto-drift + click to center
+   ============================================================ */
+const catCarousel=document.getElementById('catCarousel');
+const catTrack=document.getElementById('catTrack');
+const carPrev=document.getElementById('carPrev');
+const carNext=document.getElementById('carNext');
+let activeCategory=null;
+
+catTrack.innerHTML=CAT_ORDER.map(key=>{
+  const c=MENU[key];
+  return `<div class="cat-tile" data-cat="${key}" role="button" tabindex="0" aria-label="Voir la catégorie ${c.label}">
+    <div class="ring"><img src="${c.photo}" alt="${c.label}" loading="lazy"></div>
+    <span class="lbl">${c.label}</span>
+  </div>`;
+}).join('');
+const catTiles=[...catTrack.querySelectorAll('.cat-tile')];
+
+function selectCategory(key,{scrollTo=true}={}){
+  if(activeCategory===key){ if(scrollTo) centerTile(key); return; }
+  activeCategory=key;
+  catTiles.forEach(t=>t.classList.toggle('active', t.dataset.cat===key));
+  renderOrbitProducts(key);
+  if(scrollTo) centerTile(key);
+}
+function centerTile(key){
+  const tile = catTiles.find(t=>t.dataset.cat===key);
+  if(!tile) return;
+  const target = tile.offsetLeft + tile.offsetWidth/2 - catCarousel.clientWidth/2;
+  catCarousel.scrollTo({left:target, behavior:'smooth'});
+}
+catTiles.forEach(t=>{
+  t.addEventListener('click',()=>selectCategory(t.dataset.cat));
+  t.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectCategory(t.dataset.cat); } });
+});
+carPrev.addEventListener('click',()=>{ catCarousel.scrollBy({left:-190,behavior:'smooth'}); });
+carNext.addEventListener('click',()=>{ catCarousel.scrollBy({left:190,behavior:'smooth'}); });
+
+// 3D coverflow depth effect: tiles scale/fade/tilt based on distance from viewport center
+let coverflowRaf=null;
+function updateCoverflow(){
+  const wrapRect = catCarousel.getBoundingClientRect();
+  const centerX = wrapRect.left + wrapRect.width/2;
+  let closest=null, closestDist=Infinity;
+  catTiles.forEach(tile=>{
+    const r = tile.getBoundingClientRect();
+    const tileCenter = r.left + r.width/2;
+    const dist = tileCenter - centerX;
+    const absDist = Math.abs(dist);
+    const norm = Math.min(absDist/230,1);
+    const scale = 1.22 - norm*0.48;
+    const opacity = 1 - norm*0.6;
+    const rotateY = Math.max(-28,Math.min(28, (dist/230)*28));
+    const lift = norm*10;
+    tile.style.transform = `translateY(${lift}px) scale(${scale}) rotateY(${rotateY}deg)`;
+    tile.style.opacity = opacity;
+    tile.style.zIndex = Math.round((1-norm)*100);
+    if(absDist<closestDist){ closestDist=absDist; closest=tile; }
+  });
+  catTiles.forEach(t=>t.classList.toggle('is-center', t===closest));
+}
+function onCarouselScroll(){
+  if(coverflowRaf) cancelAnimationFrame(coverflowRaf);
+  coverflowRaf = requestAnimationFrame(updateCoverflow);
+}
+catCarousel.addEventListener('scroll', onCarouselScroll, {passive:true});
+window.addEventListener('resize', onCarouselScroll);
+
+// Gentle continuous auto-drift (ping-pong) — pauses on interaction
+let driftDir=1, driftPaused=false, driftResumeTimer=null;
+function driftTick(){
+  if(!driftPaused){
+    const max = catCarousel.scrollWidth - catCarousel.clientWidth;
+    if(max>0){
+      let next = catCarousel.scrollLeft + driftDir*0.45;
+      if(next>=max){ next=max; driftDir=-1; }
+      if(next<=0){ next=0; driftDir=1; }
+      catCarousel.scrollLeft = next;
+    }
+  }
+  requestAnimationFrame(driftTick);
+}
+function pauseDrift(){
+  driftPaused=true;
+  clearTimeout(driftResumeTimer);
+  driftResumeTimer=setTimeout(()=>{ driftPaused=false; },3000);
+}
+['mouseenter','touchstart','wheel'].forEach(evt=>catCarousel.addEventListener(evt,pauseDrift,{passive:true}));
+requestAnimationFrame(driftTick);
+
+// Initial layout pass once images/fonts settle
+setTimeout(()=>{ centerTile(CAT_ORDER[0]); updateCoverflow(); },300);
+window.addEventListener('load',updateCoverflow);
+
+/* ============================================================
+   INLINE PRODUCT REVEAL — fades the previous selection out,
+   then slides the new category's products in underneath the logo
+   ============================================================ */
+const orbitPlaceholder=document.getElementById('orbitPlaceholder');
+const orbitGridWrap=document.getElementById('orbitGridWrap');
+const orbitGrid=document.getElementById('orbitGrid');
+const orbitGridIcon=document.getElementById('orbitGridIcon');
+const orbitGridTitle=document.getElementById('orbitGridTitle');
+const orbitGridDesc=document.getElementById('orbitGridDesc');
+let orbitRenderToken=0;
+
+function renderOrbitProducts(key){
+  const myToken=++orbitRenderToken;
+  const c=MENU[key];
+  orbitPlaceholder.classList.add('hide');
+  const wasVisible=orbitGridWrap.classList.contains('show');
+  const paint=()=>{
+    if(myToken!==orbitRenderToken)return;
+    orbitGridIcon.innerHTML=`<img src="${c.photo}" alt="${c.label}" loading="lazy">`;
+    orbitGridTitle.textContent=c.label;
+    orbitGridDesc.textContent=c.desc;
+    orbitGrid.innerHTML=c.items.map(it=>`
+      <div class="item-card" data-cat="${key}" data-id="${it.id}">
+        <div class="thumb"><img src="${it.img}" alt="${it.name}" loading="lazy">${it.tag?`<span class="tag">${it.tag}</span>`:''}</div>
+        <div class="item-body">
+          <h4>${it.name}</h4>
+          <p class="desc">${it.desc}</p>
+          <div class="item-foot">
+            <span class="price">${it.sizes ? `Dès ${Math.min(...it.sizes.map(s=>s.price)).toFixed(2)} DT` : it.price.toFixed(2)+' DT'}</span>
+            ${it.sizes ? '' : `<button class="mini-add" aria-label="Ajouter ${it.name} au panier" data-quickadd="${it.id}" data-cat="${key}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+            </button>`}
+          </div>
+        </div>
+      </div>`).join('');
+    orbitGrid.querySelectorAll('.item-card').forEach(card=>{
+      card.addEventListener('click',(e)=>{
+        if(e.target.closest('.mini-add'))return;
+        openProduct(card.dataset.cat, card.dataset.id);
+      });
+    });
+    orbitGrid.querySelectorAll('[data-quickadd]').forEach(btn=>{
+      btn.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        const it=MENU[btn.dataset.cat].items.find(i=>i.id===btn.dataset.quickadd);
+        addToCart(it,1,[]);
+        pulse(btn);
+      });
+    });
+    orbitGridWrap.hidden=false;
+    requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ orbitGridWrap.classList.remove('leaving'); orbitGridWrap.classList.add('show'); }); });
+  };
+  if(wasVisible){
+    orbitGridWrap.classList.add('leaving');
+    orbitGridWrap.classList.remove('show');
+    setTimeout(paint,320);
+  } else {
+    paint();
+  }
+}
+
+function pulse(el){ el.style.transform='scale(1.3) rotate(90deg)'; setTimeout(()=>el.style.transform='',260); showToast('Ajouté au panier'); }
+
+/* ============================================================
+   PRODUCT MODAL
+   ============================================================ */
+const productOverlay=document.getElementById('productOverlay');
+const productLayout=document.getElementById('productLayout');
+const CUSTOM_OPTIONS = ['Fromage extra +2.5DT','Olives +1.5DT','Champignons +2DT','Piment +1.5DT','Sauce Algérienne +1.5DT','Sans oignons'];
+function openProduct(catKey,id){
+  const c=MENU[catKey]; const it=c.items.find(i=>i.id===id);
+  currentProduct={cat:catKey,item:it,qty:1};
+  productChips=new Set();
+  productSize = it.sizes ? `${it.sizes[0].label} +${it.sizes[0].price}DT` : null;
+  renderProduct();
+  openOverlay(productOverlay);
+}
+function renderProduct(){
+  const {item:it}=currentProduct;
+  const hasSizes = !!it.sizes;
+  const toppings = it.toppingsList ? it.toppingsList.map(t=>`${t.name} +${t.price}DT`) : CUSTOM_OPTIONS;
+  productLayout.innerHTML=`
+    <div class="product-photo"><img src="${it.img}" alt="${it.name}">${it.tag?`<span class="tag">${it.tag}</span>`:''}</div>
+    <div class="product-info">
+      <span class="eyebrow">${MENU[currentProduct.cat].label}</span>
+      <h3 style="margin-top:10px;">${it.name}</h3>
+      <p class="ingredients">${it.ingredients}</p>
+      <p class="desc">${it.desc}</p>
+      ${hasSizes ? `
+      <div class="custom-block">
+        <h5>Taille (obligatoire)</h5>
+        <div class="chip-row" id="sizeRow">
+          ${it.sizes.map((s,i)=>`<button type="button" class="chip${i===0?' active':''}" data-op="${s.label} +${s.price}DT">${s.label} <span class="plus">${s.price} DT</span></button>`).join('')}
+        </div>
+      </div>` : ''}
+      <div class="custom-block">
+        <h5>${it.toppingsList ? 'Garnitures au choix' : 'Personnalisation'}</h5>
+        <div class="chip-row" id="chipRow">
+          ${toppings.map(op=>`<button type="button" class="chip" data-op="${op}">${op}</button>`).join('')}
+        </div>
+      </div>
+      <div class="product-price-row">
+        <div class="qty-row" style="margin-top:0;">
+          <div class="qty-control">
+            <button type="button" id="qtyMinus" aria-label="Diminuer la quantité">−</button>
+            <span id="qtyVal">1</span>
+            <button type="button" id="qtyPlus" aria-label="Augmenter la quantité">+</button>
+          </div>
+        </div>
+        <span class="product-price" id="productPrice">${it.price.toFixed(2)} DT</span>
+      </div>
+      <div class="qty-row">
+        <button class="btn btn-primary add-cart-btn" id="addCartBtn" style="width:100%;">
+          <span class="label">Ajouter au panier</span>
+          <span class="check"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>&nbsp; Ajouté !</span>
+        </button>
+      </div>
+    </div>`;
+  document.getElementById('qtyMinus').addEventListener('click',()=>{ if(currentProduct.qty>1){currentProduct.qty--; updateProductPrice();} });
+  document.getElementById('qtyPlus').addEventListener('click',()=>{ currentProduct.qty++; updateProductPrice(); });
+  if(hasSizes){
+    document.querySelectorAll('#sizeRow .chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('#sizeRow .chip').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        productSize = chip.dataset.op;
+        updateProductPrice();
+      });
+    });
+  }
+  document.querySelectorAll('#chipRow .chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chip.classList.toggle('active');
+      const op=chip.dataset.op;
+      if(productChips.has(op))productChips.delete(op); else productChips.add(op);
+      updateProductPrice();
+    });
+  });
+  document.getElementById('addCartBtn').addEventListener('click',(e)=>{
+    const btn=e.currentTarget;
+    const opts = hasSizes ? [productSize, ...productChips] : [...productChips];
+    addToCart(currentProduct.item,currentProduct.qty,opts);
+    btn.classList.add('added');
+    showToast(`${currentProduct.item.name} ajouté au panier`);
+    setTimeout(()=>btn.classList.remove('added'),1400);
+  });
+  updateProductPrice();
+}
+function updateProductPrice(){
+  let extra=0;
+  if(productSize){ const m=productSize.match(/\+([\d.]+)DT/); if(m)extra+=parseFloat(m[1]); }
+  productChips.forEach(op=>{ const m=op.match(/\+([\d.]+)DT/); if(m)extra+=parseFloat(m[1]); });
+  const total=(currentProduct.item.price+extra)*currentProduct.qty;
+  document.getElementById('qtyVal').textContent=currentProduct.qty;
+  document.getElementById('productPrice').textContent=total.toFixed(2)+' DT';
+}
+document.getElementById('closeProduct').addEventListener('click',()=>closeOverlay(productOverlay));
+
+/* ============================================================
+   CART LOGIC
+   ============================================================ */
+function addToCart(item,qty,opts){
+  let extra=0;
+  opts.forEach(op=>{ const m=op.match(/\+([\d.]+)DT/); if(m)extra+=parseFloat(m[1]); });
+  const unitPrice=item.price+extra;
+  const optsKey=opts.slice().sort().join('|');
+  const existing=CART.find(l=>l.id===item.id && l.optsKey===optsKey);
+  if(existing){ existing.qty+=qty; }
+  else { CART.push({lineId:Date.now()+Math.random(),id:item.id,name:item.name,unitPrice,qty,img:item.img,opts,optsKey}); }
+  renderCart();
+}
+function removeLine(lineId){ CART=CART.filter(l=>l.lineId!==lineId); renderCart(); }
+function changeQty(lineId,delta){
+  const l=CART.find(l=>l.lineId===lineId); if(!l)return;
+  l.qty+=delta; if(l.qty<=0) return removeLine(lineId);
+  renderCart();
+}
+function cartTotal(){ return CART.reduce((s,l)=>s+l.unitPrice*l.qty,0); }
+function cartCount(){ return CART.reduce((s,l)=>s+l.qty,0); }
+
+const cartItemsEl=document.getElementById('cartItems');
+const cartFootEl=document.getElementById('cartFoot');
+const cartCountEl=document.getElementById('cartCount');
+function renderCart(){
+  const count=cartCount();
+  cartCountEl.textContent=count;
+  cartCountEl.classList.toggle('show',count>0);
+  if(CART.length===0){
+    cartItemsEl.innerHTML=`<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.8h7.6a2 2 0 0 0 2-1.6L21 8H6"/></svg><p>Votre panier est vide.<br>Explorez notre menu pour commencer.</p></div>`;
+    cartFootEl.innerHTML='';
+    return;
+  }
+  cartItemsEl.innerHTML=CART.map(l=>`
+    <div class="cart-line">
+      <img src="${l.img}" alt="${l.name}">
+      <div class="cart-line-body">
+        <span class="name">${l.name}</span>
+        <span class="opts">${l.opts.length?l.opts.map(o=>o.split(' +')[0]).join(', '):'Standard'}</span>
+        <div class="cart-line-foot">
+          <div class="qty-control">
+            <button type="button" aria-label="Diminuer" data-minus="${l.lineId}">−</button>
+            <span>${l.qty}</span>
+            <button type="button" aria-label="Augmenter" data-plus="${l.lineId}">+</button>
+          </div>
+          <span class="price">${(l.unitPrice*l.qty).toFixed(2)} DT</span>
+        </div>
+        <button class="remove-line" data-remove="${l.lineId}" style="align-self:flex-start;margin-top:6px;">Retirer</button>
+      </div>
+    </div>`).join('');
+  const subtotal=cartTotal();
+  const delivery = subtotal>0 ? 5 : 0;
+  cartFootEl.innerHTML=`
+    <div class="cart-subtotal"><span>Sous-total</span><span>${subtotal.toFixed(2)} DT</span></div>
+    <div class="cart-subtotal"><span>Livraison</span><span>${delivery.toFixed(2)} DT</span></div>
+    <div class="cart-total"><span>Total</span><b>${(subtotal+delivery).toFixed(2)} DT</b></div>
+    <button class="btn btn-primary" style="width:100%;" id="goCheckout">Passer la commande</button>`;
+  cartItemsEl.querySelectorAll('[data-minus]').forEach(b=>b.addEventListener('click',()=>changeQty(parseFloat(b.dataset.minus),-1)));
+  cartItemsEl.querySelectorAll('[data-plus]').forEach(b=>b.addEventListener('click',()=>changeQty(parseFloat(b.dataset.plus),1)));
+  cartItemsEl.querySelectorAll('[data-remove]').forEach(b=>b.addEventListener('click',()=>removeLine(parseFloat(b.dataset.remove))));
+  const goBtn=document.getElementById('goCheckout');
+  if(goBtn)goBtn.addEventListener('click',openCheckout);
+}
+renderCart();
+
+/* Cart drawer open/close */
+const cartDrawer=document.getElementById('cartDrawer');
+function openCart(){ cartDrawer.classList.add('open'); scrim.classList.add('show'); }
+function closeCartFn(){ cartDrawer.classList.remove('open'); scrim.classList.remove('show'); }
+document.getElementById('cartBtn').addEventListener('click',openCart);
+document.getElementById('openCartFromOrder').addEventListener('click',openCart);
+document.getElementById('closeCart').addEventListener('click',closeCartFn);
+scrim.addEventListener('click',closeCartFn);
+
+/* ============================================================
+   CHECKOUT
+   ============================================================ */
+const checkoutOverlay=document.getElementById('checkoutOverlay');
+const checkoutBody=document.getElementById('checkoutBody');
+let orderMode='Livraison';
+function openCheckout(){
+  closeCartFn();
+  renderCheckout();
+  openOverlay(checkoutOverlay);
+}
+function renderCheckout(){
+  const subtotal=cartTotal();
+  const delivery = orderMode==='Livraison' ? 5 : 0;
+  checkoutBody.innerHTML=`
+    <div class="order-mode">
+      <button type="button" class="${orderMode==='Livraison'?'active':''}" data-mode="Livraison">🚴 Livraison</button>
+      <button type="button" class="${orderMode==='Retrait'?'active':''}" data-mode="Retrait">🏠 À emporter</button>
+    </div>
+    <form id="checkoutForm">
+      <div class="form-grid">
+        <div class="field full"><label>Nom complet</label><input id="coName" required placeholder="Votre nom"></div>
+        <div class="field full"><label>Téléphone</label><input id="coPhone" required placeholder="+216 XX XXX XXX"></div>
+        <div class="field full" ${orderMode==='Retrait'?'style="display:none"':''}><label>Adresse de livraison</label><input id="coAddress" ${orderMode==='Livraison'?'required':''} placeholder="Adresse complète, Tunis"></div>
+        <div class="field full"><label>Note pour le restaurant</label><textarea id="coNote" rows="2" placeholder="Instructions spéciales (optionnel)"></textarea></div>
+      </div>
+      <div class="checkout-summary">
+        ${CART.map(l=>`<div class="row"><span>${l.qty}× ${l.name}</span><span>${(l.unitPrice*l.qty).toFixed(2)} DT</span></div>`).join('')}
+        <div class="row"><span>Sous-total</span><span>${subtotal.toFixed(2)} DT</span></div>
+        <div class="row"><span>${orderMode}</span><span>${delivery.toFixed(2)} DT</span></div>
+        <div class="row total"><span>Total à payer</span><span>${(subtotal+delivery).toFixed(2)} DT</span></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:22px;" ${CART.length===0?'disabled':''}>📲 Envoyer la commande sur WhatsApp</button>
+    </form>`;
+  checkoutBody.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{orderMode=b.dataset.mode; renderCheckout();}));
+  document.getElementById('checkoutForm').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const orderNum=Math.floor(1000+Math.random()*9000);
+    const name=document.getElementById('coName').value;
+    const phone=document.getElementById('coPhone').value;
+    const address=document.getElementById('coAddress') ? document.getElementById('coAddress').value : '';
+    const note=document.getElementById('coNote').value;
+    const lines=[
+      `🧾 *Nouvelle commande LOQ-${orderNum}*`,
+      ``,
+      ...CART.map(l=>`• ${l.qty}× ${l.name}${l.opts.length?` (${l.opts.map(o=>o.split(' +')[0]).join(', ')})`:''} — ${(l.unitPrice*l.qty).toFixed(2)} DT`),
+      ``,
+      `Sous-total : ${subtotal.toFixed(2)} DT`,
+      `${orderMode} : ${delivery.toFixed(2)} DT`,
+      `*Total : ${(subtotal+delivery).toFixed(2)} DT*`,
+      ``,
+      `👤 ${name}`,
+      `📞 ${phone}`,
+      orderMode==='Livraison' ? `📍 ${address}` : `🏠 À emporter sur place`,
+      note ? `📝 ${note}` : ``
+    ].filter(Boolean).join('\n');
+    const waUrl=`https://wa.me/${SITE_INFO.whatsappNumber}?text=${encodeURIComponent(lines)}`;
+    window.open(waUrl,'_blank');
+    checkoutBody.innerHTML=`
+      <div class="success-state">
+        <div class="ring"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Commande n°LOQ-${orderNum} prête !</h3>
+        <p>Un onglet WhatsApp vient de s'ouvrir avec le détail de votre commande — il ne reste plus qu'à appuyer sur envoyer pour la transmettre au restaurant.</p>
+        <button class="btn btn-ghost" id="reopenWa" style="margin-top:14px;">Rouvrir WhatsApp</button>
+        <button class="btn btn-ghost" id="doneCheckout" style="margin-top:14px;">Fermer</button>
+      </div>`;
+    CART=[]; renderCart();
+    document.getElementById('reopenWa').addEventListener('click',()=>window.open(waUrl,'_blank'));
+    document.getElementById('doneCheckout').addEventListener('click',()=>closeOverlay(checkoutOverlay));
+  });
+}
+document.getElementById('closeCheckout').addEventListener('click',()=>closeOverlay(checkoutOverlay));
+
+/* ============================================================
+   OVERLAY HELPERS
+   ============================================================ */
+function openOverlay(el){ el.classList.add('open'); document.documentElement.style.overflow='hidden'; }
+function closeOverlay(el){ el.classList.remove('open'); if(!anyOverlayOpen())document.documentElement.style.overflow=''; }
+function anyOverlayOpen(){ return [...document.querySelectorAll('.modal-overlay')].some(o=>o.classList.contains('open')) || cartDrawer.classList.contains('open'); }
+function closeAllOverlays(){ document.querySelectorAll('.modal-overlay').forEach(o=>o.classList.remove('open')); closeCartFn(); document.documentElement.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click',(e)=>{ if(e.target===ov)closeOverlay(ov); });
+});
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){closeAllOverlays(); toggleMobile(false);} });
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+const toast=document.getElementById('toast'), toastMsg=document.getElementById('toastMsg');
+let toastTimer;
+function showToast(msg){
+  toastMsg.textContent=msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'),2400);
+}
+
+/* ============================================================
+   GALLERY + LIGHTBOX
+   ============================================================ */
+const galleryGrid=document.getElementById('galleryGrid');
+galleryGrid.innerHTML=GALLERY.map((g,i)=>`
+  <div class="gallery-item reveal" data-i="${i}">
+    <img src="${g.img}" alt="${g.cap}" loading="lazy">
+    <span class="zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+    <span class="cap">${g.cap}</span>
+  </div>`).join('');
+const lightbox=document.getElementById('lightbox'), lightboxImg=document.getElementById('lightboxImg');
+let lbIndex=0;
+function openLightbox(i){ lbIndex=i; lightboxImg.src=GALLERY[i].img; lightboxImg.alt=GALLERY[i].cap; lightbox.classList.add('open'); }
+galleryGrid.querySelectorAll('.gallery-item').forEach(el=>el.addEventListener('click',()=>openLightbox(parseInt(el.dataset.i))));
+document.getElementById('lightboxClose').addEventListener('click',()=>lightbox.classList.remove('open'));
+document.getElementById('lightboxNext').addEventListener('click',()=>openLightbox((lbIndex+1)%GALLERY.length));
+document.getElementById('lightboxPrev').addEventListener('click',()=>openLightbox((lbIndex-1+GALLERY.length)%GALLERY.length));
+lightbox.addEventListener('click',(e)=>{ if(e.target===lightbox)lightbox.classList.remove('open'); });
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+const TESTIMONIALS=[
+  {name:'Sarra M.',role:'Cliente régulière',avatar:imgTag('woman,portrait',1301,100,100),text:'La meilleure pizza au feu de bois de Tunis, sans hésitation. Le service est impeccable et l\'ambiance transporte littéralement.'},
+  {name:'Amine K.',role:'Food blogger',avatar:imgTag('man,portrait',1302,100,100),text:'Le makloub libanais est une révélation. On sent le savoir-faire à chaque bouchée. Une vraie table de quartier avec des standards de grand restaurant.'},
+  {name:'Leila B.',role:'Cliente habituée',avatar:imgTag('woman,smiling',1303,100,100),text:'J\'ai réservé pour un anniversaire, l\'équipe a été aux petits soins. La crêpe Lotus restera dans ma mémoire longtemps !'},
+  {name:'Youssef T.',role:'Client d\'affaires',avatar:imgTag('businessman,portrait',1304,100,100),text:'Cadre élégant, service rapide, plats raffinés. Mon adresse préférée pour recevoir des clients à Tunis.'}
+];
+const testiSlides=document.getElementById('testiSlides');
+testiSlides.innerHTML=TESTIMONIALS.map(t=>`
+  <div class="testi-slide">
+    <div class="testi-stars">★★★★★</div>
+    <p>"${t.text}"</p>
+    <div class="testi-person"><img src="${t.avatar}" alt="${t.name}"><div><b>${t.name}</b><span>${t.role}</span></div></div>
+  </div>`).join('');
+const testiDotsWrap=document.getElementById('testiDots');
+TESTIMONIALS.forEach((_,i)=>{
+  const b=document.createElement('button'); if(i===0)b.classList.add('active');
+  b.addEventListener('click',()=>setTesti(i)); testiDotsWrap.appendChild(b);
+});
+let testiIndex=0;
+function setTesti(i){
+  testiIndex=(i+TESTIMONIALS.length)%TESTIMONIALS.length;
+  testiSlides.style.transform=`translateX(-${testiIndex*100}%)`;
+  [...testiDotsWrap.children].forEach((d,idx)=>d.classList.toggle('active',idx===testiIndex));
+}
+setInterval(()=>setTesti(testiIndex+1),6000);
+
+/* ============================================================
+   RESERVATION FORM
+   ============================================================ */
+document.getElementById('resForm').addEventListener('submit',(e)=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  const original=btn.textContent;
+  const name=document.getElementById('rName').value;
+  const phone=document.getElementById('rPhone').value;
+  const date=document.getElementById('rDate').value;
+  const time=document.getElementById('rTime').value;
+  const guests=document.getElementById('rGuests').value;
+  const occasion=document.getElementById('rOccasion').value;
+  const note=document.getElementById('rNote').value;
+  const lines=[
+    `📅 *Demande de réservation*`,
+    ``,
+    `👤 ${name}`,
+    `📞 ${phone}`,
+    `🗓️ ${date} à ${time}`,
+    `👥 ${guests}`,
+    `🎉 ${occasion}`,
+    note ? `📝 ${note}` : ``
+  ].filter(Boolean).join('\n');
+  const waUrl=`https://wa.me/${SITE_INFO.whatsappNumber}?text=${encodeURIComponent(lines)}`;
+  window.open(waUrl,'_blank');
+  btn.textContent='Ouverture de WhatsApp...';
+  btn.style.background='var(--olive)';
+  showToast('Confirmez l\'envoi dans WhatsApp pour valider votre réservation.');
+  setTimeout(()=>{ btn.textContent=original; btn.style.background=''; e.target.reset(); },3500);
+});
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); revealObserver.unobserve(en.target); } });
+},{threshold:0.14});
+function observeReveals(){ document.querySelectorAll('.reveal:not(.in)').forEach(el=>revealObserver.observe(el)); }
+observeReveals();
+new MutationObserver(observeReveals).observe(document.body,{childList:true,subtree:true});
+</script>
+</body>
+</html>
