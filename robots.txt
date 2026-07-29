@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://voidnexuus.github.io/LO9MA-site/sitemap.xml
